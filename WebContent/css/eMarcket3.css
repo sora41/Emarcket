@@ -1,0 +1,22 @@
+@CHARSET "ISO-8859-1";
+
+body {
+	background-color: black;
+	color: white;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+h1 {
+	color: white;
+	font-family: Arial Black, sans-serif;
+	border-bottom: 1px solid white;
+}
+
+p {
+	font-size: 11pt;
+	text-align: justify;
+}
+
+a {
+	color: chartreuse;
+}
