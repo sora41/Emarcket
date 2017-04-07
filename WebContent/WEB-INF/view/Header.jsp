@@ -150,7 +150,7 @@
 								</div>
 							</ul>-->
 					</li>
-					<li><a href="about.html">About Us</a></li>
+					<li><a href="#">About Us</a></li>
 					<!--
 					<li class="w3pages"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown" role="button" aria-haspopup="true"
