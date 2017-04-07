@@ -25,19 +25,6 @@
 			<script defer src="js/jquery.flexslider.js"></script>
 			<link rel="stylesheet" href="css/flexslider.css" type="text/css"
 				media="screen" />
-			<script>
-				// Can also be used with $(document).ready()
-				/*
-				$(window).load(function() {
-					$('.flexslider').flexslider({
-						animation : "slide",
-						controlNav : "thumbnails"
-					});
-				});
-				*/
-			</script>
-			<!-- flexslider -->
-			<!-- //zooming-effect -->
 		</div>
 		<div class="col-md-8 single-right">
 			<h3 id = "ProductName">
@@ -122,8 +109,8 @@
 </div>
 
 <%@ include file="/WEB-INF/view/Footer.jsp"%>
-			<!-- zooming-effect -->
-			<script src="js/imagezoom.js"></script>
+			<!-- zooming-effect 
+			<script src="js/imagezoom.js"></script> -->
 
 
 <script>
