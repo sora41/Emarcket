@@ -12,7 +12,7 @@
 
 			<div class=" col-xs-1"></div>
 			<div class=" col-xs-1 libelle">Designation</div>
-			<div class=" col-xs-1">Quantitee</div>
+			<div class=" col-md-2">Quantitee</div>
 			<div class=" col-xs-1">Prix Unitaire</div>
 			<div class=" col-xs-1">Prix Total</div>
 		</div>
@@ -22,7 +22,8 @@
 	<div id="LastCartline">
 		<div class="model row">
 			<button id="validerPanier" class=" col-xs-1 modelProduct">Valider</button>
-			<div class=" col-xs-3 ">Total :</div>
+			<div class=" col-xs-4 "></div>
+			<div>Total :</div>
 			<div id="total" class=" col-xs-1 CartTTC">0.0</div>
 			<div class=" col-xs-1 ">euro</div>
 		</div>
@@ -34,7 +35,7 @@
 			<button class=" col-xs-1 deleteProduct">X</button>
 			<div class=" col-xs-1 libelle">nom defaut</div>
 			<!--<div class=" col-xs-1">Quantity</div>-->
-			<div class="  quantity-select">
+			<div class="col-md-2 quantity-select">
 				<div class="col-xs-1 entry value-minus1">&nbsp;</div>
 				<div class="col-xs-1  entry value1">
 					<span> 1 </span>
