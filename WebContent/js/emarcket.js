@@ -121,14 +121,12 @@ function loadEventQuantityAddOnes() {
 								divUpd.text(), 10) + 1;
 						divUpd.text(newVal);
 						if ($("#total").length > 0){
-							// console.log("prix unitaire
-							// "+$(this).parent().parent().find(".prixU"));
+							 console.log("prix unitaire"+$(this).parent().parent().find(".prixU"));
 							var baliseUnitProductprice = $(this).parent().parent().find(".prixU");
 							var unitProductprice = parseFloat(baliseUnitProductprice.text());
 							
-							// console.log("prix unitaire "+unitProductprice);
-							// console.log("prix total
-							// "+$(this).parent().parent().find(".prixT"));
+							 console.log("prix unitaire "+unitProductprice);
+							console.log("prix total"+$(this).parent().parent().find(".prixT"));
 							
 							var baliseTotalProductPrice = $(this).parent().parent().find(".prixT");
 							var totalProductprice = parseFloat(baliseTotalProductPrice.text());
