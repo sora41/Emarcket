@@ -6,20 +6,21 @@
 <%@ include file="/WEB-INF/view/Header.jsp"%>
 	<h1>Ajoute un nouveaux produit</h1>
 	<FORM METHOD=POST ACTION="/EMarket3/CreateProductServ1">
-		<table>
-			<tr>
-				<td>Nom</td>
-				<td><INPUT TYPE=TEXT NAME="name"></td>
-			</tr>
-			<tr>
-				<td>prix</td>
-				<td><INPUT TYPE=TEXT NAME="price"></td>
-			</tr>
-			<tr>
-				<td><INPUT TYPE=SUBMIT VALUE="SUBMIT"></td>
-				<td><INPUT TYPE="reset" VALUE="CLEAR"></td>
-			</tr>
-		</table>
+
+			
+				Nom
+				<INPUT TYPE=TEXT NAME="name">
+
+				prix
+				<INPUT TYPE=TEXT NAME="price">
+				
+				Url-image
+				<INPUT TYPE=TEXT NAME="UrlImg">
+			
+			
+				<INPUT TYPE=SUBMIT VALUE="SUBMIT">
+				<INPUT TYPE="reset" VALUE="CLEAR">
+		
 	</FORM>
 		<%@ include file="/WEB-INF/view/Footer.jsp" %>    
 </html>
