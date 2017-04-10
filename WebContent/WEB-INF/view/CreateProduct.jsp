@@ -15,7 +15,7 @@
 				<INPUT TYPE=TEXT NAME="price">
 				
 				Url-image
-				<INPUT TYPE=TEXT NAME="UrlImg">
+				<INPUT TYPE=TEXT NAME="urlImg">
 				
 				Description
 				<INPUT TYPE=TEXT NAME="description">

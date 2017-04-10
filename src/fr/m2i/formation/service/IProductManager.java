@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import fr.m2i.formation.Dto.Catalogue;
 import fr.m2i.formation.Dto.Product;
+import fr.m2i.formation.service.exception.ProductException;
 /**
  * Interface permetant la gestion des product
  * @author Florent
@@ -15,7 +16,7 @@ public interface IProductManager {
 	 *  @return le product cree et qui a ete ajoute aux catalogue 
 	 *  @author Florent 
 	 */
-	public abstract void createProduct(Catalogue catalogue ,String name,double price);
+	public abstract void createProduct(Product newProduct) throws ProductException;
 	/**
 	 * @param id identifiant de type int du produit a suprimer
 	 *  efface un produit 

@@ -12,21 +12,24 @@ import fr.m2i.formation.Dto.Component;
 import fr.m2i.formation.Dto.Product;
 import fr.m2i.formation.jdbc.JdbcZero;
 import fr.m2i.formation.service.IProductManager;
+import fr.m2i.formation.service.exception.ProductException;
 
 public class ProductManagerImpl implements IProductManager {
 
-	private final String SQL_SELECT_ALL_PRODUCT = "SELECT id,name,selling_price,image_URL,description" + " FROM `product`";
+	private final String SQL_SELECT_ALL_PRODUCT = " SELECT id,name,selling_price,image_URL,description"
+			+ " FROM `product`";
 	private final String SQL_SELECT_BY_ID_PRODUCT = SQL_SELECT_ALL_PRODUCT + " WHERE ID = ?";
-	private final String SQL_DELETE_PRODUCT_BY_ID = "delete from product where id = ?;";
-	private final String SQL_INSERT_INTO_PRODUCT = "INSERT INTO " + "`product`( `name`, `selling_price`) VALUES (?,?)";
-	private final String SQL_SELECT_COMPONENTS_BY_PRODUCT_ID = "SELECT product_id,component_id,quantity "
+	private final String SQL_DELETE_PRODUCT_BY_ID = " DELETE FROM product WHERE id = ?;";
+	private final String SQL_INSERT_INTO_PRODUCT = " INSERT INTO "
+			+ "`product`( `name`, `selling_price`,`image_URL`,`description`) " + " VALUES (?,?,?,?)";
+	private final String SQL_SELECT_COMPONENTS_BY_PRODUCT_ID = " SELECT product_id,component_id,quantity "
 			+ " FROM product_has_component" + " WHERE product_id = ?";
 	private final String SQL_SELECT_JOIN_COMPONENTS_BY_PRODUCT_ID = " SELECT p.name as nameProdcut,"
 			+ " c.name as nameComponent,c.supplier,c.value,c.unit,c.libelle," + " phc.quantity,phc.component_id  "
 			+ " FROM product_has_component phc,component c,product p " + " WHERE (phc.component_id = c.id) "
 			+ " AND (p.id = phc.product_id) " + " AND( p.id =?)";
 
-	private void InsertProduct(Product p) throws Exception {
+	private void insertProduct(Product p) throws Exception {
 		if (p != null) {
 			PreparedStatement prep1 = null;
 			Connection mysqlConnection = null;
@@ -36,6 +39,8 @@ public class ProductManagerImpl implements IProductManager {
 				prep1 = mysqlConnection.prepareStatement(SQL_INSERT_INTO_PRODUCT, Statement.RETURN_GENERATED_KEYS);
 				prep1.setString(1, p.getName());
 				prep1.setDouble(2, p.getSellingPrice());
+				prep1.setString(3, p.getPathImg());
+				prep1.setString(4, p.getDescription());
 				prep1.executeUpdate();
 				// recupere le id autogenere par le base
 				rs = prep1.getGeneratedKeys();
@@ -50,25 +55,59 @@ public class ProductManagerImpl implements IProductManager {
 		}
 	}
 
-	@Override
-	public void createProduct(Catalogue catalogue, String name, double price) {
-		ArrayList<Product> listProducts;
-		Product newProduct = new Product();
-		newProduct.setName(name);
-		newProduct.setSellingPrice(price);
-		if (name != null)
-			if ((!name.isEmpty()) && (Double.compare(price, 0) >= 0)) {
-				listProducts = catalogue.getListProducts();
-				try {
-					InsertProduct(newProduct);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-				listProducts.add(newProduct);
+	public void createProduct(Product newProduct) {
+		if (newProduct != null) {
+
+			try {
+				doCheckProduct(newProduct);
+				insertProduct(newProduct);
+			} catch (Exception e) {
+				e.printStackTrace();
 			}
+		}
+	}
+	
+	private void doChekcValue(String name,String value )throws ProductException
+	{
+		if ((value == null) || value.isEmpty()) {
+			throw new ProductException( name +"vide");
+		}
+	}
+	private void doChekcValueName(String value )throws ProductException
+	{
+		doChekcValue("name",value);
+	}
+	
+	private void doChekcValueDescription(String value )throws ProductException
+	{
+		doChekcValue("Description",value);
+	}
+	
+	private void doChekcValueUrlImg(String value )throws ProductException
+	{
+		doChekcValue("UrlImage",value);
+	}
+	
+
+	private void doCheckProduct(Product newProduct) throws ProductException {
+
+		if (newProduct == null)
+			throw new ProductException("Produit null");
+
+		doChekcValueName( newProduct.getName());
+		
+		double price = newProduct.getSellingPrice();
+
+		if (Double.compare(price, 0) < 0) {
+			throw new ProductException("prix negatif");
+		}
+		
+		doChekcValueDescription(newProduct.getDescription());
+		
+		doChekcValueUrlImg(newProduct.getPathImg());		
 	}
 
-	private void DoDeleteProduct(int id) throws SQLException {
+	private void doDeleteProduct(int id) throws SQLException {
 
 		PreparedStatement prep1 = null;
 		Connection mysqlConnection = null;
@@ -87,7 +126,7 @@ public class ProductManagerImpl implements IProductManager {
 	public void deleteProduct(int id) {
 		if (id >= 0) {
 			try {
-				DoDeleteProduct(id);
+				doDeleteProduct(id);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -123,7 +162,7 @@ public class ProductManagerImpl implements IProductManager {
 					componentItem.setUnit(rs.getString("unit"));
 					componentItem.setValue(rs.getDouble("value"));
 					componentItem.setLibelle(rs.getString("libelle"));
-					
+
 					components.add(componentItem);
 				}
 			} finally {
