@@ -104,7 +104,7 @@
 							</c:when>
 							<c:otherwise>
 								<li class="dropdown"><a
-									href="<c:url value="CreateProduct"/>">Add Product</a></li>
+									href="<c:url value="CreateProduct"/>">Ajouter un produit</a></li>
 							</c:otherwise>
 						</c:choose>
 					</c:if>
