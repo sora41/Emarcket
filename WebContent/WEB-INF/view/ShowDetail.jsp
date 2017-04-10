@@ -75,7 +75,7 @@
 			</c:choose>
 			<div class="color-quality">
 				<div class="color-quality-right">
-					<h5>Quatity :</h5>
+					<h5>Quantite :</h5>
 					<div class="quantity">
 						<div class="quantity-select">
 							<div class="entry value-minus1">&nbsp;</div>
@@ -101,7 +101,7 @@
 						name="w3ls_item" value="<c:out value="${product.name}"></c:out>">
 					<input type="hidden" name="amount"
 						value=<c:out value="${product.sellingPrice}"></c:out>>
-					<button type="submit" id="add" class="w3ls-cart" value="${product.id}">Add to cart</button>
+					<button type="submit" id="add" class="w3ls-cart" value="${product.id}">Ajouter aux panier</button>
 			<!--  	</form>-->
 			</div>
 		</div>

@@ -16,6 +16,9 @@
 				
 				Url-image
 				<INPUT TYPE=TEXT NAME="UrlImg">
+				
+				Description
+				<INPUT TYPE=TEXT NAME="description">
 			
 			
 				<INPUT TYPE=SUBMIT VALUE="SUBMIT">

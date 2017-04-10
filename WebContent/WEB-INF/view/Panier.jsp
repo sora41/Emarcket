@@ -6,13 +6,13 @@
 <%@ include file="/WEB-INF/view/Header.jsp"%>
 <div class="container">
 	<h1>PANIER</h1>
-	<div>Validation panier</div>
+	<div>Validation </div>
 	<div id="templateLegende">
 		<div class="model row">
 
 			<div class=" col-xs-1"></div>
 			<div class=" col-xs-1 libelle">Designation</div>
-			<div class=" col-md-2">Quantitee</div>
+			<div class=" col-md-2">Quantite</div>
 			<div class=" col-xs-1">Prix Unitaire</div>
 			<div class=" col-xs-1">Prix Total</div>
 		</div>
@@ -22,8 +22,8 @@
 	<div id="LastCartline">
 		<div class="model row">
 			<button id="validerPanier" class=" col-xs-1 modelProduct">Valider</button>
-			<div class=" col-xs-4 "></div>
-			<div>Total :</div>
+			<div class=" col-xs-2 "></div>
+			<div  class ="col-xs-2">Total de votre Panier :</div>
 			<div id="total" class=" col-xs-1 CartTTC">0.0</div>
 			<div class=" col-xs-1 ">euro</div>
 		</div>

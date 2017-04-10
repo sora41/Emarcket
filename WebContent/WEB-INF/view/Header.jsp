@@ -18,7 +18,7 @@
 
 
 
-<title>Bienvenu E-marcket</title>
+<title>Bienvenu E-market</title>
 </head>
 <body>
 
@@ -39,7 +39,7 @@
 			</div>
 			<div class="w3l_logo">
 				<h1>
-					<a href="index.jsp">E Marcket<span>Your Computeur. Your
+					<a href="index.jsp">E Market<span>Your Computeur. Your
 							Components.</span></a>
 				</h1>
 			</div>
@@ -66,9 +66,8 @@
 				</div>
 				<div class="register">
 					<ul>
-
 						<li class="resp-tab-item" aria-controls="tab_item-0"><a
-							href="<c:url value="/DisconectUserServ"/>">Log out</a></li>
+							href="<c:url value="/DisconectUserServ"/>">deconnecter</a></li>
 
 					</ul>
 
@@ -93,11 +92,11 @@
 			</div>
 			<div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
 				<ul class="nav navbar-nav">
-					<li><a href="index.jsp" class="act">Home</a></li>
-					<!-- Mega Menu -->
+					<!--  <li><a href="index.jsp" class="act">Home</a></li>
+					 Mega Menu -->
 					<c:if test="${!empty sessionScope.sessionUtilisateur}">
 						<li class="dropdown"><a
-							href="<c:url value="/CatalogueServ"/>">Catalogue</a></li>
+							href="<c:url value="/CatalogueServ"/>">catalogue</a></li>
 						<c:choose>
 							<c:when
 								test="${sessionScope.sessionUtilisateur.role == 'Internaute'}">
@@ -152,7 +151,7 @@
 								</div>
 							</ul>-->
 					</li>
-					<li><a href="#">About Us</a></li>
+					<li><a href="#">Apropos de nous </a></li>
 					<!--
 					<li class="w3pages"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown" role="button" aria-haspopup="true"

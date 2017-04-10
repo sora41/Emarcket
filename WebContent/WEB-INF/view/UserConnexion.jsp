@@ -14,16 +14,16 @@
       <section class="login-form">
         <form method="post" action="/EMarket3/UserConnectServ" role="login">
          <!--   <img src="http://i.imgur.com/RcmcLv4.png" class="img-responsive" alt="" />-->
-         <h1> E MARCKET</h1>
-          <input type="login" name="login" placeholder="login" required class="form-control input-lg" value="Emarcket" />
+         <h1> E MARKET</h1>
+          <input type="login" name="login" placeholder="login" required class="form-control input-lg" value="Emarket" />
           
-          <input type="password" name="password" class="form-control input-lg" id="password" placeholder="Password" required="" />
+          <input type="password" name="password" class="form-control input-lg" id="password" placeholder="mot de passe" required="" />
           
           
           <div class="pwstrength_viewport_progress"></div>
 
           
-          <button type="submit" name="go" class="btn btn-lg btn-primary btn-block">Sign in</button>
+          <button type="submit" name="go" class="btn btn-lg btn-primary btn-block">Se connecter</button>
           <!--<div>
             <a href="#">Create account</a> or <a href="#">reset password</a>
           </div>

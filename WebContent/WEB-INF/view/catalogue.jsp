@@ -34,7 +34,7 @@
 
 								<input type="hidden" name="id"
 									value=<c:out value="${product.id}"></c:out> />
-								<button type="submit" class="w3ls-cart add-cart" data-id=" ${product.id}" >Add to cart</button>
+								<button type="submit" class="w3ls-cart add-cart" data-id=" ${product.id}" >Ajouter aux panier</button>
 								<form id="details" action="/EMarket3/DetailsProduitServ"
 									method="post">
 									<input type="hidden" name="id"
