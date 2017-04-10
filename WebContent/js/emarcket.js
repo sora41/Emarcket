@@ -46,14 +46,14 @@ function generateCookieAdd(id,name,prix,quantity)
 	var quantity2 =0;
 	var chekpanier =0;
 	if (!isNaN(quantity)) {
-		console.log("id:"+id);
+		//console.log("id:"+id);
 		var cartProducts = $.cookie("panier")||{};
-		console.log("tab_cookie"+cartProducts);
+		//console.log("tab_cookie"+cartProducts);
 		chekpanier =  checkPanier(cartProducts,id);
 		quantity2 = quantity + chekpanier;
-		console.log("chekpanier ="+chekpanier);			
-		console.log("quantity ="+quantity);
-		console.log("quantity2 ="+quantity2);
+		//console.log("chekpanier ="+chekpanier);			
+		//console.log("quantity ="+quantity);
+		//console.log("quantity2 ="+quantity2);
 		cartProducts[id] = {qte:quantity2,nom:name,prix:prix};
 		$.cookie("panier",cartProducts);
 	}
@@ -61,7 +61,7 @@ function generateCookieAdd(id,name,prix,quantity)
 
 function addCartAddItemDetails() {
 	$("#add").on('click', function() {
-		console.log("apelle addCartAddItemDetails ");
+		//console.log("apelle addCartAddItemDetails ");
 		var quantity = 0;
 		quantity =parseInt( $(".value-plus1").parent().find('.value1').text());
 		
@@ -234,20 +234,20 @@ function generateCart(Debug = false)
 function deleteitemCart()
 {
 	$(".deleteProduct").on("click",function () {
-		console.log("delete");
+		//console.log("delete");
 		var panier = $.cookie("panier");
 		var id = $(this).attr("data-id");
-		console.log("id:"+id);
+		//console.log("id:"+id);
 		var subtotal = panier[id].prix * panier[id].qte;
-		console.log("subtotal:"+ subtotal);
+		//console.log("subtotal:"+ subtotal);
 		var total = parseFloat(($("#total").attr("data-total")));
-		console.log("total av soustraction:"+ total);
+		//console.log("total av soustraction:"+ total);
 		total = total - subtotal;
-		console.log("total ap soustration:"+ total);
+		//console.log("total ap soustration:"+ total);
 		delete panier[id];
 		$.cookie("panier",panier);
 		$(this).parents(".model").remove();
-		console.log("total  affectation:"+ total);
+		//console.log("total  affectation:"+ total);
 		$("#total").attr("data-total",total).text(total);	
 		
 	})
