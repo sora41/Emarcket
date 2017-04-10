@@ -234,20 +234,22 @@ function generateCart(Debug = false)
 function deleteitemCart()
 {
 	$(".deleteProduct").on("click",function () {
-		//console.log("delete");
+		console.log("delete");
 		var panier = $.cookie("panier");
 		var id = $(this).attr("data-id");
-		//console.log("id:"+id);
+		console.log("id:"+id);
 		var subtotal = panier[id].prix * panier[id].qte;
-		//console.log("subtotal:"+ subtotal);
+		console.log("subtotal:"+ subtotal);
 		var total = parseFloat(($("#total").attr("data-total")));
-		//console.log("total:"+ total);
+		console.log("total av soustraction:"+ total);
 		total = total - subtotal;
-		//console.log("total:"+ total);
+		console.log("total ap soustration:"+ total);
 		delete panier[id];
 		$.cookie("panier",panier);
 		$(this).parents(".model").remove();
-		$("#total").attr("data.total",total).text(total);	
+		console.log("total  affectation:"+ total);
+		$("#total").attr("data-total",total).text(total);	
+		
 	})
 }
 

@@ -109,8 +109,7 @@
 </div>
 
 <%@ include file="/WEB-INF/view/Footer.jsp"%>
-			<!-- zooming-effect 
-			<script src="js/imagezoom.js"></script> -->
+
 
 
 <script>
