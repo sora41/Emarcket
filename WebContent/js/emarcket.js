@@ -16,13 +16,13 @@ function showErrorLogin(error) {
 
 function checkPanier(tab,indice)
 {
-	//console.log("indice :" +indice)
+	// console.log("indice :" +indice)
 	if (isNaN(indice)){
 		return 0;
 	}
 	
-	//console.log(" tabt[indice] :" +tab[indice]);
-	//console.log(" tabt[indice] :" +isNaN(tab[indice]));
+	// console.log(" tabt[indice] :" +tab[indice]);
+	// console.log(" tabt[indice] :" +isNaN(tab[indice]));
 	
 	// test sur la case de tableau avec l indice est renseigner
 	if ((tab[indice] == undefined)){
@@ -46,14 +46,14 @@ function generateCookieAdd(id,name,prix,quantity)
 	var quantity2 =0;
 	var chekpanier =0;
 	if (!isNaN(quantity)) {
-		//console.log("id:"+id);
+		// console.log("id:"+id);
 		var cartProducts = $.cookie("panier")||{};
-		//console.log("tab_cookie"+cartProducts);
+		// console.log("tab_cookie"+cartProducts);
 		chekpanier =  checkPanier(cartProducts,id);
 		quantity2 = quantity + chekpanier;
-		//console.log("chekpanier ="+chekpanier);			
-		//console.log("quantity ="+quantity);
-		//console.log("quantity2 ="+quantity2);
+		// console.log("chekpanier ="+chekpanier);
+		// console.log("quantity ="+quantity);
+		// console.log("quantity2 ="+quantity2);
 		cartProducts[id] = {qte:quantity2,nom:name,prix:prix};
 		$.cookie("panier",cartProducts);
 	}
@@ -61,7 +61,7 @@ function generateCookieAdd(id,name,prix,quantity)
 
 function addCartAddItemDetails() {
 	$("#add").on('click', function() {
-		//console.log("apelle addCartAddItemDetails ");
+		// console.log("apelle addCartAddItemDetails ");
 		var quantity = 0;
 		quantity =parseInt( $(".value-plus1").parent().find('.value1').text());
 		
@@ -76,8 +76,8 @@ function addCartAddItemDetails() {
 function addCartAddItemCatalogue() {
 	$(".add-cart").on('click', function() {
 		
-		 var id = parseInt($(this).attr("data-id"));
-		 console.log("clic add cart"+ id);
+		var id = parseInt($(this).attr("data-id"));
+		//console.log("clic add cart"+ id);
 		 
 		var name =  $(this).parent().parent().find(".nameProduct").text();
 		var valuePrixText =$(this).parent().find(".item_price").text();
@@ -108,6 +108,7 @@ function updateCartTotal (unitValue)
 {
 	var total = parseFloat( $(".CartTTC").text());
 	total = total + unitValue;
+	total = roundDecimal(total,2);
 	$(".CartTTC").text(total);
 	$(".CartTTC").attr("data-total",total);
 }
@@ -117,26 +118,35 @@ function loadEventQuantityAddOnes() {
 			.on(
 					'click',
 					function() {
-						var divUpd = $(this).parent().find('.value1'), newVal = parseInt(
+						var divUpd = $(this).parent().find('.value1'), newVal =  parseInt(
 								divUpd.text(), 10) + 1;
 						divUpd.text(newVal);
+						//console.log("quantite :"+newVal);
 						if ($("#total").length > 0){
-							// console.log("prix unitaire"+$(this).parent().parent().find(".prixU"));
+							// console.log("prix
+							// unitaire"+$(this).parent().parent().find(".prixU"));
 							var baliseUnitProductprice = $(this).parent().parent().find(".prixU");
 							var unitProductprice = parseFloat(baliseUnitProductprice.text());
 							
-							// console.log("prix unitaire "+unitProductprice);
+							//console.log("prix unitaire "+unitProductprice);
+							//console.log("prix unitaire round "+Math.round( unitProductprice));
+							
 							//console.log("prix total"+$(this).parent().parent().find(".prixT"));
 							
 							var baliseTotalProductPrice = $(this).parent().parent().find(".prixT");
 							var totalProductprice = parseFloat(baliseTotalProductPrice.text());
-							// console.log("prix total "+totalProductprice);
+							totalProductprice =  roundDecimal(totalProductprice,2);
+							//console.log("prix total "+ totalProductprice);
+							//console.log("prix total round " +totalProductprice);
 							
-							totalProductprice = totalProductprice +unitProductprice;
+							totalProductprice = totalProductprice + unitProductprice;
+							totalProductprice =  roundDecimal(totalProductprice,2);
+							
 							baliseTotalProductPrice.text(totalProductprice);
 							updateCartTotal(unitProductprice);
-							var id =parseInt( $(this).parent().find('.value1').attr("data-id"));
-							// console.log("id:value1 "+id);
+							
+							var id = parseInt( $(this).parent().find('.value1').attr("data-id"));
+							//console.log("id:value1 "+id);
 							updatePanier(id,newVal)		
 						}
 					});
@@ -157,7 +167,6 @@ function loadEventQuantitySubstractOnes() {
 					// "+$(this).parent().parent().find(".prixU"));
 					var baliseUnitProductprice= $(this).parent().parent().find(".prixU");
 					var unitProductprice = parseFloat(baliseUnitProductprice.text());
-					
 					// console.log("prix unitaire
 					// "+unitProductprice);
 					// console.log("prix total
@@ -165,9 +174,11 @@ function loadEventQuantitySubstractOnes() {
 					
 					var baliseTotalProductPrice= $(this).parent().parent().find(".prixT");
 					var totalProductprice = parseFloat(baliseTotalProductPrice.text());
+					totalProductprice =  roundDecimal(totalProductprice,2);
 					// console.log("prix total "+totalProductprice);
 					
-					totalProductprice = totalProductprice -unitProductprice;
+					totalProductprice = totalProductprice - unitProductprice;
+					totalProductprice =  roundDecimal(totalProductprice,2);
 					baliseTotalProductPrice.text(totalProductprice);
 					var id =parseInt( $(this).parent().find('.value1').attr("data-id"));
 					// console.log("id:value1 "+id);
@@ -234,20 +245,20 @@ function generateCart(Debug = false)
 function deleteitemCart()
 {
 	$(".deleteProduct").on("click",function () {
-		//console.log("delete");
+		// console.log("delete");
 		var panier = $.cookie("panier");
 		var id = $(this).attr("data-id");
-		//console.log("id:"+id);
+		// console.log("id:"+id);
 		var subtotal = panier[id].prix * panier[id].qte;
-		//console.log("subtotal:"+ subtotal);
+		// console.log("subtotal:"+ subtotal);
 		var total = parseFloat(($("#total").attr("data-total")));
-		//console.log("total av soustraction:"+ total);
+		// console.log("total av soustraction:"+ total);
 		total = total - subtotal;
-		//console.log("total ap soustration:"+ total);
+		// console.log("total ap soustration:"+ total);
 		delete panier[id];
 		$.cookie("panier",panier);
 		$(this).parents(".model").remove();
-		//console.log("total  affectation:"+ total);
+		// console.log("total affectation:"+ total);
 		$("#total").attr("data-total",total).text(total);	
 		
 	})
@@ -268,4 +279,10 @@ function ValidateCart()
 				{alert("appelle AJAX reussi ")}
 		})
 	});
+}
+
+function roundDecimal(nombre, precision){
+    var precision = precision || 2;
+    var tmp = Math.pow(10, precision);
+    return Math.round( nombre*tmp )/tmp;
 }
