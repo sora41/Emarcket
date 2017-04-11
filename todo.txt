@@ -1,0 +1,40 @@
+
+0.0 V corriger l ajoute pannier que ne prend pas le quantiter 
+	sur la page details 
+0.0.1 V corriger l ecrasement de la valeur  quantiter	 dans le panier 
+0.1 V ajouter levent sur add panier sur la page catalog  
+	pour lajout au panier
+0.2 V ajouter la gestion du cookie sur les deux page qui gere le panier 
+0.3 V corection page Panier soustraire la somme des produit suprimer du panier
+	bug interviens quand le panier en entierement vide 
+0.4 X page details ajouter prix  le unitaire et le prix total 
+apres consultation Ldcl ne se fait pas comme ca 
+0.5 X corection faire varie le prix total en fonction de nombre de produit 
+apres consultation Ldcl ne se fait pas comme ca 
+0.6 V modification des encodage sur les JPS en UTF8
+0.7 V corection de la valeur decimal trop long sur le panier 
+0.8 V surprimer le cookie sur le log out 
+0.9 V reprendre ajout produit et le remettre fonctionnel
+0.91 remettre en forme la page de saisie de nouveaux produit 
+1 cree un nouvelle page pour gere les produit cote admin 
+1.1 ajouter le liens ver l ajout
+1.2 cree la page de modification d'un produit 
+1.3 cree la page de supresion d'un produit 
+2 reprendre affichage admin 
+3 ajoute page sur admin modifier produit 
+4 remettre en forme la page panier boot strap voir largeur minimum
+5 ajoute l insertion en base d'un panier 
+6 ajoute la posibilite aux  web user de consulter ces ancienne commande 
+7 cree une nouvelle class impl de gestion sql avec JPA 
+
+
+
+
+
+
+
+
+
+
+
+  
